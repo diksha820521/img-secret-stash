@@ -7,13 +7,13 @@ import { Upload, Eye, Image as ImageIcon, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ExtractDataPage = () => {
-  const [stegoImage, setStegoImage] = useState<string | null>(null);
+  const [stegoImage, setStegoImage] = useState(null);
   const [extractedMessage, setExtractedMessage] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingProgress, setProcessingProgress] = useState(0);
   const { toast } = useToast();
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (event) => {
     const file = event.target.files?.[0];
     if (file) {
       if (!file.type.includes("png")) {
@@ -27,7 +27,7 @@ const ExtractDataPage = () => {
 
       const reader = new FileReader();
       reader.onload = () => {
-        setStegoImage(reader.result as string);
+        setStegoImage(reader.result);
         setExtractedMessage(""); // Reset previous message
       };
       reader.readAsDataURL(file);

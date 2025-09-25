@@ -9,16 +9,16 @@ import { Upload, Download, Image as ImageIcon, Lock, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const HideDataPage = () => {
-  const [coverImage, setCoverImage] = useState<string | null>(null);
-  const [stegoImage, setStegoImage] = useState<string | null>(null);
+  const [coverImage, setCoverImage] = useState(null);
+  const [stegoImage, setStegoImage] = useState(null);
   const [secretMessage, setSecretMessage] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingProgress, setProcessingProgress] = useState(0);
-  const [psnr, setPsnr] = useState<number | null>(null);
-  const [ssim, setSsim] = useState<number | null>(null);
+  const [psnr, setPsnr] = useState(null);
+  const [ssim, setSsim] = useState(null);
   const { toast } = useToast();
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (event) => {
     const file = event.target.files?.[0];
     if (file) {
       if (!file.type.includes("png")) {
@@ -32,7 +32,7 @@ const HideDataPage = () => {
 
       const reader = new FileReader();
       reader.onload = () => {
-        setCoverImage(reader.result as string);
+        setCoverImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
