@@ -9,14 +9,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        gradient: "btn-gradient-primary text-primary-foreground border-0",
-        hero: "bg-gradient-primary text-primary-foreground hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300",
+        default: "bg-primary text-primary-foreground hover:bg-black hover:text-white hover:scale-105 transition-all duration-300",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-black hover:text-white hover:scale-105 transition-all duration-300",
+        outline: "border border-input bg-background hover:bg-black hover:text-white hover:scale-105 transition-all duration-300",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-black hover:text-white hover:scale-105 transition-all duration-300",
+        ghost: "hover:bg-black hover:text-white hover:scale-105 transition-all duration-300",
+        link: "text-primary underline-offset-4 hover:underline hover:text-black transition-all duration-300",
+        gradient: "btn-gradient-primary text-primary-foreground border-0 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300",
+        hero: "bg-gradient-primary text-primary-foreground hover:bg-black hover:text-white hover:scale-105 hover:shadow-glow transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

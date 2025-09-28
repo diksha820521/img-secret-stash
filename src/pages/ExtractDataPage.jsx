@@ -77,27 +77,27 @@ const ExtractDataPage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold gradient-text-primary">Extract Hidden Data</h1>
-        <p className="text-muted-foreground">
+    <div className="max-w-4xl mx-auto space-y-12 px-4 sm:px-6 lg:px-8">
+      <div className="text-center space-y-6 py-8">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-primary">Extract Hidden Data</h1>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
           Upload a steganographic image to reveal the hidden message
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid gap-8 lg:grid-cols-2">
         {/* Upload Section */}
         <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Upload className="h-5 w-5 text-primary" />
+          <CardHeader className="p-6 sm:p-8">
+            <CardTitle className="flex items-center space-x-3 text-xl">
+              <Upload className="h-6 w-6 text-primary" />
               <span>Steganographic Image</span>
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="mt-2">
               Upload a PNG image containing hidden data
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-8 p-6 sm:p-8 pt-0">
             <div className="upload-zone">
               <input
                 type="file"
@@ -108,20 +108,20 @@ const ExtractDataPage = () => {
               />
               <label htmlFor="stego-upload" className="cursor-pointer">
                 {stegoImage ? (
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <img 
                       src={stegoImage} 
                       alt="Steganographic" 
-                      className="max-h-64 mx-auto rounded-lg shadow-card"
+                      className="max-h-64 sm:max-h-80 mx-auto rounded-lg shadow-card"
                     />
                     <p className="text-sm text-muted-foreground">Click to change image</p>
                   </div>
                 ) : (
-                  <div className="space-y-4">
-                    <ImageIcon className="h-16 w-16 mx-auto text-muted-foreground" />
+                  <div className="space-y-6">
+                    <ImageIcon className="h-20 w-20 sm:h-24 sm:w-24 mx-auto text-muted-foreground" />
                     <div>
-                      <p className="text-lg font-medium">Upload Steganographic Image</p>
-                      <p className="text-sm text-muted-foreground mt-2">
+                      <p className="text-lg sm:text-xl font-medium">Upload Steganographic Image</p>
+                      <p className="text-sm text-muted-foreground mt-3">
                         PNG files only • Click to browse or drag and drop
                       </p>
                     </div>
@@ -133,7 +133,7 @@ const ExtractDataPage = () => {
             <Button
               onClick={handleExtractMessage}
               disabled={!stegoImage || isProcessing}
-              className="btn-gradient-primary w-full"
+              className="btn-gradient-primary w-full h-12 text-base"
               size="lg"
             >
               <Eye className="h-4 w-4 mr-2" />
@@ -141,12 +141,12 @@ const ExtractDataPage = () => {
             </Button>
 
             {isProcessing && (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex justify-between text-sm">
                   <span>Analyzing image...</span>
                   <span>{processingProgress}%</span>
                 </div>
-                <Progress value={processingProgress} className="h-2" />
+                <Progress value={processingProgress} className="h-3" />
                 <p className="text-xs text-muted-foreground text-center">
                   Decoding steganographic data from image pixels
                 </p>
@@ -157,24 +157,24 @@ const ExtractDataPage = () => {
 
         {/* Results Section */}
         <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Eye className="h-5 w-5 text-accent" />
+          <CardHeader className="p-6 sm:p-8">
+            <CardTitle className="flex items-center space-x-3 text-xl">
+              <Eye className="h-6 w-6 text-accent" />
               <span>Extracted Message</span>
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="mt-2">
               The hidden message recovered from the image
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6 p-6 sm:p-8 pt-0">
             {extractedMessage ? (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="relative">
                   <Textarea
                     value={extractedMessage}
                     readOnly
                     rows={8}
-                    className="resize-none bg-muted/50 border-accent/20"
+                    className="resize-none bg-muted/50 border-accent/20 text-sm sm:text-base"
                   />
                   <Button
                     onClick={copyToClipboard}
@@ -186,18 +186,18 @@ const ExtractDataPage = () => {
                   </Button>
                 </div>
                 
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm text-muted-foreground">
                   <span>{extractedMessage.length} characters extracted</span>
-                  <Button onClick={copyToClipboard} variant="outline" size="sm">
+                  <Button onClick={copyToClipboard} variant="outline" size="sm" className="self-start sm:self-auto">
                     <Copy className="h-4 w-4 mr-2" />
                     Copy Message
                   </Button>
                 </div>
               </div>
             ) : (
-              <div className="text-center py-12">
-                <Eye className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                <p className="text-muted-foreground">
+              <div className="text-center py-16">
+                <Eye className="h-16 w-16 sm:h-20 sm:w-20 mx-auto text-muted-foreground mb-6" />
+                <p className="text-muted-foreground text-base">
                   Upload a steganographic image and click extract to reveal hidden messages
                 </p>
               </div>
@@ -208,26 +208,26 @@ const ExtractDataPage = () => {
 
       {/* Info Section */}
       <Card className="card-elegant">
-        <CardContent className="pt-6">
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="space-y-2">
-              <Upload className="h-8 w-8 text-primary mx-auto" />
-              <h3 className="font-semibold">1. Upload Image</h3>
-              <p className="text-sm text-muted-foreground">
+        <CardContent className="p-6 sm:p-8">
+          <div className="grid gap-8 sm:gap-12 md:grid-cols-3 text-center">
+            <div className="space-y-4">
+              <Upload className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto" />
+              <h3 className="font-semibold text-lg">1. Upload Image</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Select a PNG image containing hidden steganographic data
               </p>
             </div>
-            <div className="space-y-2">
-              <Eye className="h-8 w-8 text-accent mx-auto" />
-              <h3 className="font-semibold">2. Extract Data</h3>
-              <p className="text-sm text-muted-foreground">
+            <div className="space-y-4">
+              <Eye className="h-10 w-10 sm:h-12 sm:w-12 text-accent mx-auto" />
+              <h3 className="font-semibold text-lg">2. Extract Data</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Our algorithm analyzes pixels to recover embedded messages
               </p>
             </div>
-            <div className="space-y-2">
-              <Copy className="h-8 w-8 text-secondary mx-auto" />
-              <h3 className="font-semibold">3. Copy Message</h3>
-              <p className="text-sm text-muted-foreground">
+            <div className="space-y-4">
+              <Copy className="h-10 w-10 sm:h-12 sm:w-12 text-secondary mx-auto" />
+              <h3 className="font-semibold text-lg">3. Copy Message</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 View and copy the extracted hidden message for use
               </p>
             </div>

@@ -89,26 +89,26 @@ const HideDataPage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8">
-      <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold gradient-text-primary">Hide Secret Data</h1>
-        <p className="text-muted-foreground">
+    <div className="max-w-6xl mx-auto space-y-12 px-4 sm:px-6 lg:px-8">
+      <div className="text-center space-y-6 py-8">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-primary">Hide Secret Data</h1>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
           Embed your secret message into an image using steganography
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid gap-8 lg:grid-cols-2">
         {/* Input Section */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           <Card className="card-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Upload className="h-5 w-5 text-primary" />
+            <CardHeader className="p-6 sm:p-8">
+              <CardTitle className="flex items-center space-x-3 text-xl">
+                <Upload className="h-6 w-6 text-primary" />
                 <span>Cover Image</span>
               </CardTitle>
-              <CardDescription>Upload a PNG image to hide data in</CardDescription>
+              <CardDescription className="mt-2">Upload a PNG image to hide data in</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 sm:p-8 pt-0">
               <div className="upload-zone">
                 <input
                   type="file"
@@ -119,20 +119,20 @@ const HideDataPage = () => {
                 />
                 <label htmlFor="image-upload" className="cursor-pointer">
                   {coverImage ? (
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       <img 
                         src={coverImage} 
                         alt="Cover" 
-                        className="max-h-48 mx-auto rounded-lg shadow-card"
+                        className="max-h-48 sm:max-h-64 mx-auto rounded-lg shadow-card"
                       />
                       <p className="text-sm text-muted-foreground">Click to change image</p>
                     </div>
                   ) : (
-                    <div className="space-y-4">
-                      <ImageIcon className="h-12 w-12 mx-auto text-muted-foreground" />
+                    <div className="space-y-6">
+                      <ImageIcon className="h-16 w-16 sm:h-20 sm:w-20 mx-auto text-muted-foreground" />
                       <div>
-                        <p className="font-medium">Upload PNG Image</p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="font-medium text-lg">Upload PNG Image</p>
+                        <p className="text-sm text-muted-foreground mt-2">
                           Click to browse or drag and drop
                         </p>
                       </div>
@@ -144,23 +144,23 @@ const HideDataPage = () => {
           </Card>
 
           <Card className="card-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Lock className="h-5 w-5 text-primary" />
+            <CardHeader className="p-6 sm:p-8">
+              <CardTitle className="flex items-center space-x-3 text-xl">
+                <Lock className="h-6 w-6 text-primary" />
                 <span>Secret Message</span>
               </CardTitle>
-              <CardDescription>Enter the message to hide in the image</CardDescription>
+              <CardDescription className="mt-2">Enter the message to hide in the image</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="secret-message">Your Secret Message</Label>
+            <CardContent className="space-y-6 p-6 sm:p-8 pt-0">
+              <div className="space-y-3">
+                <Label htmlFor="secret-message" className="text-base">Your Secret Message</Label>
                 <Textarea
                   id="secret-message"
                   placeholder="Enter your secret message here..."
                   value={secretMessage}
                   onChange={(e) => setSecretMessage(e.target.value)}
                   rows={4}
-                  className="resize-none"
+                  className="resize-none text-base"
                 />
                 <p className="text-xs text-muted-foreground">
                   {secretMessage.length} characters
@@ -170,18 +170,18 @@ const HideDataPage = () => {
               <Button
                 onClick={handleGenerateStego}
                 disabled={!coverImage || !secretMessage.trim() || isProcessing}
-                className="btn-gradient-primary w-full"
+                className="btn-gradient-primary w-full h-12 text-base"
               >
                 {isProcessing ? "Processing..." : "Generate Stego Image"}
               </Button>
 
               {isProcessing && (
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex justify-between text-sm">
                     <span>Processing...</span>
                     <span>{processingProgress}%</span>
                   </div>
-                  <Progress value={processingProgress} className="h-2" />
+                  <Progress value={processingProgress} className="h-3" />
                 </div>
               )}
             </CardContent>
@@ -189,32 +189,32 @@ const HideDataPage = () => {
         </div>
 
         {/* Output Section */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           <Card className="card-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <ImageIcon className="h-5 w-5 text-accent" />
+            <CardHeader className="p-6 sm:p-8">
+              <CardTitle className="flex items-center space-x-3 text-xl">
+                <ImageIcon className="h-6 w-6 text-accent" />
                 <span>Steganographic Image</span>
               </CardTitle>
-              <CardDescription>Your image with hidden data embedded</CardDescription>
+              <CardDescription className="mt-2">Your image with hidden data embedded</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 sm:p-8 pt-0">
               {stegoImage ? (
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <img 
                     src={stegoImage} 
                     alt="Steganographic" 
                     className="w-full rounded-lg shadow-card"
                   />
-                  <Button onClick={handleDownload} className="w-full" variant="secondary">
+                  <Button onClick={handleDownload} className="w-full h-12" variant="secondary">
                     <Download className="h-4 w-4 mr-2" />
                     Download Stego Image
                   </Button>
                 </div>
               ) : (
                 <div className="upload-zone">
-                  <ImageIcon className="h-12 w-12 mx-auto text-muted-foreground" />
-                  <p className="text-muted-foreground">
+                  <ImageIcon className="h-16 w-16 sm:h-20 sm:w-20 mx-auto text-muted-foreground" />
+                  <p className="text-muted-foreground text-base">
                     Steganographic image will appear here
                   </p>
                 </div>
@@ -224,19 +224,19 @@ const HideDataPage = () => {
 
           {(psnr !== null || ssim !== null) && (
             <Card className="card-elegant">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Info className="h-5 w-5 text-primary" />
+              <CardHeader className="p-6 sm:p-8">
+                <CardTitle className="flex items-center space-x-3 text-xl">
+                  <Info className="h-6 w-6 text-primary" />
                   <span>Image Quality Metrics</span>
                 </CardTitle>
-                <CardDescription>Quality assessment of the steganographic image</CardDescription>
+                <CardDescription className="mt-2">Quality assessment of the steganographic image</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label>PSNR (Peak Signal-to-Noise Ratio)</Label>
-                    <div className="flex items-center space-x-2">
-                      <Badge variant="secondary" className="text-lg px-3 py-1">
+              <CardContent className="space-y-6 p-6 sm:p-8 pt-0">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-3">
+                    <Label className="text-base">PSNR (Peak Signal-to-Noise Ratio)</Label>
+                    <div className="flex items-center space-x-3">
+                      <Badge variant="secondary" className="text-lg px-4 py-2">
                         {psnr?.toFixed(2)} dB
                       </Badge>
                     </div>
@@ -244,10 +244,10 @@ const HideDataPage = () => {
                       Higher is better (&gt;40 dB is excellent)
                     </p>
                   </div>
-                  <div className="space-y-2">
-                    <Label>SSIM (Structural Similarity)</Label>
-                    <div className="flex items-center space-x-2">
-                      <Badge variant="secondary" className="text-lg px-3 py-1">
+                  <div className="space-y-3">
+                    <Label className="text-base">SSIM (Structural Similarity)</Label>
+                    <div className="flex items-center space-x-3">
+                      <Badge variant="secondary" className="text-lg px-4 py-2">
                         {ssim?.toFixed(3)}
                       </Badge>
                     </div>
