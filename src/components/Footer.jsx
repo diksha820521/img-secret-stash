@@ -9,7 +9,7 @@ const Footer = () => {
             <span className="text-sm">Made with</span>
             <Heart className="h-4 w-4 text-red-500 fill-current" />
             <span className="text-sm">by</span>
-            <span className="text-sm font-semibold text-primary">DIKSHA CHAUHAN</span>
+            <span className="text-sm font-semibold text-primary">DIKSHA HARSHVARDHAN CHAUHAN</span>
           </div>
         </div>
       </div>
