@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Shield, Home, Eye, EyeOff, Info } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const Navigation = () => {
           </Link>
           
           <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto">
+            <ThemeToggle />
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;

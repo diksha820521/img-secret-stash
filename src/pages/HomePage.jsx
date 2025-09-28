@@ -5,9 +5,9 @@ import { EyeOff, Eye, Shield, Lock } from "lucide-react";
 
 const HomePage = () => {
   return (
-    <div className="max-w-4xl mx-auto space-y-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-4xl mx-auto space-y-16 px-4 sm:px-6 lg:px-8">
       {/* Hero Section */}
-      <div className="text-center space-y-8 py-8 sm:py-12">
+      <div className="text-center space-y-10 py-12 sm:py-16">
         <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-primary/10 animate-float">
           <Shield className="w-10 h-10 sm:w-12 sm:h-12 text-primary" />
         </div>
@@ -21,7 +21,7 @@ const HomePage = () => {
       </div>
 
       {/* Action Cards */}
-      <div className="grid gap-8 md:grid-cols-2 pb-8">
+      <div className="grid gap-12 md:grid-cols-2 pb-12">
         <Card className="card-elegant group hover:shadow-glow transition-all duration-500">
           <CardHeader className="space-y-4 p-6 sm:p-8">
             <div className="flex items-center space-x-4">
@@ -80,7 +80,7 @@ const HomePage = () => {
       </div>
 
       {/* Features Section */}
-      <Card className="card-elegant mb-12">
+      <Card className="card-elegant mb-16">
         <CardHeader className="p-6 sm:p-8">
           <CardTitle className="text-center text-2xl sm:text-3xl">Why Choose SteganoCrypt?</CardTitle>
         </CardHeader>
